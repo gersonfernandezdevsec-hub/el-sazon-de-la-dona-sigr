@@ -94,19 +94,23 @@
     const saldo = S.fidelizacion.estadoCliente(estado, pedido.clienteId);
     const regalo = S.fidelizacion.platoRegalo(estado);
     const yaTiene = pedido.items.some((i) => i.recompensa);
-    return h('p', { class: 'pedido-fidelizacion' },
-      saldo.disponibles
-        ? ['Tiene ' + saldo.disponibles + (saldo.disponibles === 1 ? ' postre' : ' postres') + ' de regalo. ',
-          pedido.estado === 'abierto' && !yaTiene ? h('button', {
-            class: 'boton boton--chico', type: 'button',
-            onclick: () => {
-              const r = S.fidelizacion.canjear(pedido.id);
-              S.avisar(r.ok ? 'Postre de regalo agregado' : r.errores[0], r.ok ? 'ok' : 'error');
-              repintar();
-            }
-          }, 'Agregar ' + (regalo ? regalo.nombre.toLowerCase() : 'postre') + ' de regalo') : null]
-        : yaTiene ? 'Este pedido incluye su postre de regalo.'
-          : 'Le faltan ' + S.dinero(saldo.falta) + ' de consumo para su próximo postre.');
+    const quedan = saldo.disponibles;
+    const plural = (n) => n + (n === 1 ? ' postre' : ' postres') + ' de regalo';
+    if (yaTiene) {
+      return h('p', { class: 'pedido-fidelizacion' }, 'Este pedido incluye su postre de regalo.' + (quedan ? ' Le quedan ' + plural(quedan) + ' para otra visita.' : ''));
+    }
+    if (!quedan) {
+      return h('p', { class: 'pedido-fidelizacion' }, 'Le faltan ' + S.dinero(saldo.falta) + ' de consumo para su próximo postre.');
+    }
+    return h('p', { class: 'pedido-fidelizacion' }, 'Tiene ' + plural(quedan) + '. ',
+      pedido.estado === 'abierto' ? h('button', {
+        class: 'boton boton--chico', type: 'button',
+        onclick: () => {
+          const r = S.fidelizacion.canjear(pedido.id);
+          S.avisar(r.ok ? 'Postre de regalo agregado' : r.errores[0], r.ok ? 'ok' : 'error');
+          repintar();
+        }
+      }, 'Agregar ' + (regalo ? regalo.nombre.toLowerCase() : 'postre') + ' de regalo') : 'Se agrega antes de enviar el pedido a cocina.');
   });
 
   S.registrarVista({
