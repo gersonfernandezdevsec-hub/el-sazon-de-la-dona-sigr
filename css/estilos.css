@@ -166,3 +166,24 @@ input[type="checkbox"] { width: auto; }
 .plato__acciones { grid-column: 1 / -1; display: flex; gap: .4rem; flex-wrap: wrap; }
 .plato--agotado .plato__texto h3, .plato--agotado .plato__precio { color: var(--tinta-suave); }
 .casilla { display: flex; align-items: center; gap: .5rem; }
+
+.tablero { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; align-items: start; }
+.tablero__columna { background: #eceee8; border-radius: var(--radio); padding: .75rem; min-height: 8rem; }
+.tablero__columna h2 { font-size: 1rem; display: flex; justify-content: space-between; align-items: center; }
+.tablero__conteo { background: var(--papel); border-radius: 999px; padding: 0 .55rem; font-size: .9rem; font-variant-numeric: tabular-nums; }
+.tarjeta-pedido { background: var(--papel); border: 1px solid var(--borde); border-left: 4px solid var(--hoja); border-radius: var(--radio); padding: .7rem .8rem; margin-top: .6rem; }
+.tarjeta-pedido--demorado { border-left-color: var(--aji); }
+.tarjeta-pedido h3 { display: flex; justify-content: space-between; align-items: baseline; margin: 0; }
+.tarjeta-pedido h3 small { font-weight: 400; }
+.tarjeta-pedido p { margin: .2rem 0 0; }
+.tarjeta-pedido__tiempo { font-size: .88rem; color: var(--tinta-suave); }
+.tarjeta-pedido__acciones { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: .6rem; }
+.pedido-resumen { margin-bottom: .75rem; }
+.fila-agregar { display: grid; grid-template-columns: 1fr 5rem auto; gap: .5rem; margin-top: .75rem; }
+.pedido-cliente .fila-agregar, .fila-agregar--izquierda { grid-template-columns: 1fr auto; }
+.fila-agregar--izquierda { margin: 0 auto 0 0; flex: 1; min-width: 16rem; }
+.pedido-cliente { margin-top: 1rem; padding-top: .75rem; border-top: 1px solid var(--borde); }
+.pedido-cliente p { margin: 0; }
+.tabla tfoot td { border-bottom: 0; }
+@media (max-width: 900px) { .tablero { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .tablero { grid-template-columns: 1fr; } }

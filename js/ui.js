@@ -53,7 +53,7 @@ window.SIGR = window.SIGR || {};
     return S.h('ul', { class: 'errores', role: 'alert' }, lista.map((e) => S.h('li', null, e)));
   };
 
-  S.dialogo = function (titulo, contenido) {
+  S.dialogo = function (titulo, contenido, alCerrar) {
     const dlg = S.h('dialog', { class: 'dialogo' });
     const cerrar = () => { dlg.close(); dlg.remove(); };
     dlg.append(
@@ -61,7 +61,7 @@ window.SIGR = window.SIGR || {};
         S.h('h2', null, titulo),
         S.h('button', { class: 'boton boton--plano', type: 'button', onclick: cerrar, 'aria-label': 'Cerrar' }, 'Cerrar')),
       S.h('div', { class: 'dialogo__cuerpo' }, contenido(cerrar)));
-    dlg.addEventListener('close', () => dlg.remove());
+    dlg.addEventListener('close', () => { dlg.remove(); if (alCerrar) alCerrar(); });
     document.body.append(dlg);
     dlg.showModal();
     return cerrar;
