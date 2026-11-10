@@ -154,3 +154,15 @@ input[type="checkbox"] { width: auto; }
   .aviso { animation: entra .18s ease-out; }
   @keyframes entra { from { transform: translateY(6px); opacity: 0; } }
 }
+
+.carta-grupo { margin-bottom: 2rem; }
+.carta-grupo__titulo { display: flex; justify-content: space-between; align-items: center; gap: 1rem; border-bottom: 2px solid var(--hoja); padding-bottom: .35rem; margin-bottom: .25rem; }
+.carta-grupo__titulo h2 { margin: 0; color: var(--hoja-oscura); }
+.carta-lista { list-style: none; margin: 0; padding: 0; }
+.plato { display: grid; grid-template-columns: 1fr auto; gap: .25rem 1.5rem; padding: .8rem 0; border-bottom: 1px solid var(--borde); }
+.plato h3 { margin: 0; display: flex; gap: .5rem; align-items: center; flex-wrap: wrap; }
+.plato p { margin: .15rem 0 0; color: var(--tinta-suave); }
+.plato__precio { font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.plato__acciones { grid-column: 1 / -1; display: flex; gap: .4rem; flex-wrap: wrap; }
+.plato--agotado .plato__texto h3, .plato--agotado .plato__precio { color: var(--tinta-suave); }
+.casilla { display: flex; align-items: center; gap: .5rem; }
