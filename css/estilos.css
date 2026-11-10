@@ -228,3 +228,4 @@ input[type="checkbox"] { width: auto; }
 .tabla--angosta { max-width: 34rem; }
 .pedido-fidelizacion { margin-top: .6rem !important; padding: .6rem .75rem; background: var(--maiz-suave); border-radius: var(--radio); }
 .tabla .barras__pista { min-width: 7rem; height: .6rem; margin-bottom: .2rem; }
+.sin-salto { white-space: nowrap; font-variant-numeric: tabular-nums; }

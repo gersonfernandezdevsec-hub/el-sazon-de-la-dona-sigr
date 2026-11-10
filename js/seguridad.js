@@ -160,6 +160,25 @@ window.SIGR = window.SIGR || {};
       sessionStorage.setItem(CLAVE_SESION, JSON.stringify(sesion));
     },
 
+    cambiarActivo(usuarioId, activo) {
+      const actual = this.exigir('usuarios.gestionar');
+      if (usuarioId === actual.id) return { ok: false, errores: ['No puedes desactivar tu propia cuenta.'] };
+      const cuenta = S.datos.guardar((e) => {
+        const u = e.usuarios.find((x) => x.id === usuarioId);
+        if (u) { u.activo = !!activo; u.intentosFallidos = 0; u.bloqueadoHasta = 0; }
+        return u;
+      });
+      if (!cuenta) return { ok: false, errores: ['La cuenta no existe.'] };
+      registrar(activo ? 'usuario.activado' : 'usuario.desactivado', cuenta.usuario);
+      return { ok: true, errores: [] };
+    },
+
+    async crearPersonal(datos) {
+      this.exigir('usuarios.gestionar');
+      if (!['admin', 'mesero'].includes(datos.rol)) return { ok: false, errores: ['Elige el rol: mesero o administración.'] };
+      return this.crearUsuario(datos);
+    },
+
     puede(usuario, permiso) {
       return !!usuario && (PERMISOS[usuario.rol] || []).includes(permiso);
     },

@@ -92,6 +92,23 @@
     afirmar(S.datos.leer().bitacora.some((b) => b.accion === 'acceso.denegado'), 'falta el registro');
   });
 
+  prueba(M, 'Solo administración crea personal; una cuenta desactivada no entra', async () => {
+    await S.sembrar();
+    await S.seguridad.iniciarSesion('mesero', 'Mesero2026*');
+    let bloqueado = false;
+    try { await S.seguridad.crearPersonal({ nombre: 'Nuevo Mesero', usuario: 'nuevo.mesero', clave: 'Clave1234', rol: 'mesero' }); } catch (e) { bloqueado = true; }
+    afirmar(bloqueado, 'un mesero no crea cuentas');
+    S.seguridad.cerrarSesion();
+    await S.seguridad.iniciarSesion('admin', 'Totuma2026*');
+    igual((await S.seguridad.crearPersonal({ nombre: 'Nuevo Mesero', usuario: 'nuevo.mesero', clave: 'Clave1234', rol: 'cliente' })).ok, false);
+    const r = await S.seguridad.crearPersonal({ nombre: 'Nuevo Mesero', usuario: 'nuevo.mesero', clave: 'Clave1234', rol: 'mesero' });
+    igual(r.ok, true);
+    igual(S.seguridad.cambiarActivo(S.seguridad.usuarioActual().id, false).ok, false, 'no se desactiva a sí mismo');
+    igual(S.seguridad.cambiarActivo(r.usuario.id, false).ok, true);
+    S.seguridad.cerrarSesion();
+    igual((await S.seguridad.iniciarSesion('nuevo.mesero', 'Clave1234')).ok, false);
+  });
+
   prueba(M, 'Los datos de demostración cargan una sola vez', async () => {
     igual(await S.sembrar(), true);
     igual(await S.sembrar(), false);
