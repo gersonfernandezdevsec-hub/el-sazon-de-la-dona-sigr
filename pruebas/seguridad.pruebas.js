@@ -2,7 +2,7 @@
 (function (S) {
   const { prueba, afirmar, igual } = S;
   const M = 'Seguridad';
-  const valida = { nombre: 'Ana Gómez', usuario: 'anagomez', clave: 'Segura123', rol: 'cliente' };
+  const valida = { nombre: 'Ana Gómez', usuario: 'anagomez', clave: 'Segura123', rol: 'cliente', telefono: '3110000001' };
 
   prueba(M, 'La contraseña no se guarda en texto', async () => {
     const r = await S.seguridad.crearUsuario(valida);
@@ -14,7 +14,7 @@
 
   prueba(M, 'Dos cuentas con la misma contraseña tienen hash distinto', async () => {
     const a = await S.seguridad.crearUsuario(valida);
-    const b = await S.seguridad.crearUsuario(Object.assign({}, valida, { usuario: 'otra.ana' }));
+    const b = await S.seguridad.crearUsuario(Object.assign({}, valida, { usuario: 'otra.ana', telefono: '3110000002' }));
     afirmar(a.usuario.hash !== b.usuario.hash, 'la sal no está funcionando');
   });
 
@@ -23,6 +23,13 @@
     igual((await S.seguridad.crearUsuario(Object.assign({}, valida, { clave: 'sololetras' }))).ok, false);
     await S.seguridad.crearUsuario(valida);
     igual((await S.seguridad.crearUsuario(valida)).ok, false);
+  });
+
+  prueba(M, 'El cliente debe dar un teléfono válido y que no esté repetido', async () => {
+    igual((await S.seguridad.crearUsuario(Object.assign({}, valida, { telefono: '' }))).ok, false);
+    igual((await S.seguridad.crearUsuario(Object.assign({}, valida, { telefono: '31a' }))).ok, false);
+    await S.seguridad.crearUsuario(valida);
+    igual((await S.seguridad.crearUsuario(Object.assign({}, valida, { usuario: 'otra.ana' }))).ok, false);
   });
 
   prueba(M, 'Rechaza nombres de usuario con caracteres peligrosos', async () => {

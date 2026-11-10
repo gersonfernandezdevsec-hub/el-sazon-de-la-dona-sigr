@@ -51,7 +51,7 @@
 
     function formularioCrear() {
       const nombre = h('input', { type: 'text', autocomplete: 'name', required: true, maxlength: '60' });
-      const telefono = h('input', { type: 'tel', inputmode: 'numeric', autocomplete: 'tel', maxlength: '10' });
+      const telefono = h('input', { type: 'tel', inputmode: 'numeric', autocomplete: 'tel', maxlength: '10', required: true });
       const usuario = h('input', { type: 'text', autocomplete: 'username', required: true, maxlength: '20' });
       const clave = h('input', { type: 'password', autocomplete: 'new-password', required: true, maxlength: '64' });
       const boton = h('button', { class: 'boton boton--principal', type: 'submit' }, 'Crear cuenta');

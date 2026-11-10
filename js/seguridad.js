@@ -44,7 +44,11 @@ window.SIGR = window.SIGR || {};
       errores.push('La contraseña debe tener mínimo 8 caracteres, con al menos una letra y un número.');
     }
     if (!PERMISOS[rol]) errores.push('El rol no es válido.');
-    if (telefono && !/^\d{7,10}$/.test(limpiar(telefono))) errores.push('El teléfono debe tener entre 7 y 10 dígitos.');
+    if (rol === 'cliente' && !limpiar(telefono)) errores.push('El teléfono es obligatorio para los clientes.');
+    else if (telefono && !/^\d{7,10}$/.test(limpiar(telefono))) errores.push('El teléfono debe tener entre 7 y 10 dígitos.');
+    else if (rol === 'cliente' && existentes.some((u) => u.rol === 'cliente' && u.telefono === limpiar(telefono))) {
+      errores.push('Ya hay una cuenta de cliente con ese teléfono.');
+    }
     return errores;
   }
 
