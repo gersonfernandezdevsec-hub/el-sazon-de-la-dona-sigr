@@ -8,16 +8,16 @@
     S.seguridad.cerrarSesion();
     await S.seguridad.iniciarSesion(usuario, clave);
   }
-  S.comoAdmin = () => comoRol('admin', 'Totuma2026*');
+  S.comoAdmin = () => comoRol('admin', 'Sazon2026*');
   S.comoMesero = () => comoRol('mesero', 'Mesero2026*');
   S.comoCliente = () => comoRol('cliente', 'Cliente2026*');
 
-  const nuevo = () => ({ nombre: 'Pepitoria sola', descripcion: 'Porción', precio: 15000, categoriaId: 'cat-2', disponible: true });
+  const nuevo = () => ({ nombre: 'Frijoles con garra', descripcion: 'Porción', precio: 15000, categoriaId: 'cat-2', disponible: true });
 
   prueba(M, 'Administración crea, edita y elimina un plato', async () => {
     await S.comoAdmin();
     igual(S.carta.guardarPlato(nuevo()).ok, true);
-    const plato = S.datos.leer().platos.find((p) => p.nombre === 'Pepitoria sola');
+    const plato = S.datos.leer().platos.find((p) => p.nombre === 'Frijoles con garra');
     igual(S.carta.guardarPlato(Object.assign(nuevo(), { precio: 16000 }), plato.id).ok, true);
     igual(S.datos.leer().platos.find((p) => p.id === plato.id).precio, 16000);
     igual(S.carta.eliminarPlato(plato.id).ok, true);
@@ -29,7 +29,7 @@
     igual(S.carta.guardarPlato(Object.assign(nuevo(), { precio: -5 })).ok, false);
     igual(S.carta.guardarPlato(Object.assign(nuevo(), { precio: 'abc' })).ok, false);
     igual(S.carta.guardarPlato(Object.assign(nuevo(), { precio: 1500.5 })).ok, false);
-    igual(S.carta.guardarPlato(Object.assign(nuevo(), { nombre: 'carne OREADA' })).ok, false);
+    igual(S.carta.guardarPlato(Object.assign(nuevo(), { nombre: 'sancocho TRIFÁSICO' })).ok, false);
     igual(S.carta.guardarPlato(Object.assign(nuevo(), { categoriaId: 'no-existe' })).ok, false);
   });
 
@@ -40,7 +40,7 @@
       try { S.carta.guardarPlato(nuevo()); } catch (e) { bloqueado = true; }
       afirmar(bloqueado, 'debió bloquear');
     }
-    igual(S.datos.leer().platos.some((p) => p.nombre === 'Pepitoria sola'), false);
+    igual(S.datos.leer().platos.some((p) => p.nombre === 'Frijoles con garra'), false);
   });
 
   prueba(M, 'El cliente no ve los platos agotados', async () => {

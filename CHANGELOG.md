@@ -15,6 +15,7 @@ Línea base del sistema. Reúne los prototipos 0 a 6.
 - **Prototipo 4.** Caja: cobro en efectivo con cálculo de cambio, tarjeta o transferencia; resumen del día; ventas de 7 días; cierre diario.
 - **Prototipo 5.** Programa de clientes frecuentes: postre de regalo por cada $200.000 de consumo, tarjeta de sellos, canje desde el pedido y configuración por administración.
 - **Prototipo 6.** Administración de cuentas del personal y vista de bitácora con filtro de alertas de seguridad.
+- **Identidad.** El restaurante se llama El Sazón de la Doña y su carta es de comida típica antioqueña.
 - Documentación: casos de uso, diseño y experiencia de usuario, seguridad y definición de la línea base.
 - 59 pruebas automáticas.
 

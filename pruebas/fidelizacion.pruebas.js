@@ -6,9 +6,9 @@
   const cliente = () => S.datos.leer().usuarios.find((u) => u.usuario === 'cliente');
   const saldo = () => S.fidelizacion.estadoCliente(S.datos.leer(), cliente().id);
 
-  function visita(cabros, mesaId) {
+  function visita(bandejas, mesaId) {
     const { pedido } = S.pedidos.abrir(mesaId || 'mesa-3');
-    S.pedidos.agregarPlato(pedido.id, 'cat-2-p1', cabros);
+    S.pedidos.agregarPlato(pedido.id, 'cat-2-p1', bandejas);
     S.pedidos.asignarCliente(pedido.id, TEL);
     S.pedidos.avanzar(pedido.id); S.pedidos.avanzar(pedido.id); S.pedidos.avanzar(pedido.id);
     S.caja.cobrar(pedido.id, 'tarjeta');
@@ -58,7 +58,7 @@
     const r = S.fidelizacion.canjear(id);
     igual(r.ok, true);
     const pedido = S.datos.leer().pedidos.find((p) => p.id === id);
-    igual(S.pedidos.totales(pedido, 0.08).total, 7000, 'solo se cobra la limonada');
+    igual(S.pedidos.totales(pedido, 0.08).total, 7000, 'solo se cobra la aguapanela');
     igual(saldo().disponibles, 0);
   });
 
@@ -96,7 +96,7 @@
     igual(saldo().consumo, 237000);
     const resumen = S.caja.resumenDia(S.datos.leer(), '2026-11-10');
     igual(resumen.regalos, 1);
-    igual(resumen.masVendidos.some((v) => v.nombre === 'Oblea con arequipe'), false);
+    igual(resumen.masVendidos.some((v) => v.nombre === 'Brevas con arequipe'), false);
   });
 
   prueba(M, 'No se quita el cliente de un pedido que ya tiene regalo', async () => {
@@ -128,7 +128,7 @@
     igual(S.fidelizacion.configurar({ activa: true, umbral: 150500, platoRecompensaId: 'cat-4-p2' }).ok, false);
     igual(S.fidelizacion.configurar({ activa: true, umbral: 150000, platoRecompensaId: 'no-existe' }).ok, false);
     igual(S.fidelizacion.configurar({ activa: true, umbral: 150000, platoRecompensaId: 'cat-4-p2' }).ok, true);
-    igual(S.fidelizacion.platoRegalo(S.datos.leer()).nombre, 'Bocadillo veleño con queso');
+    igual(S.fidelizacion.platoRegalo(S.datos.leer()).nombre, 'Postre de natas');
   });
 
   prueba(M, 'Un cliente no puede canjearse regalos a sí mismo', async () => {

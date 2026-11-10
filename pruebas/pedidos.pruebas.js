@@ -74,7 +74,7 @@
   prueba(M, 'El pedido conserva el precio aunque la carta cambie', async () => {
     await S.comoAdmin();
     const id = S.pedidoDePrueba();
-    S.carta.guardarPlato({ nombre: 'Carne oreada', descripcion: '', precio: 45000, categoriaId: 'cat-2' }, 'cat-2-p2');
+    S.carta.guardarPlato({ nombre: 'Sancocho trifásico', descripcion: '', precio: 45000, categoriaId: 'cat-2' }, 'cat-2-p2');
     igual(S.pedidos.totales(leer(id), 0.08).total, 52000);
   });
 

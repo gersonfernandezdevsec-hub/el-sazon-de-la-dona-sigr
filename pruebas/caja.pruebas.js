@@ -50,7 +50,7 @@
     igual(r.total, 104000);
     igual(r.porMetodo, { efectivo: 52000, tarjeta: 52000, transferencia: 0 });
     igual(r.promedio, 52000);
-    igual(r.masVendidos[0], { nombre: 'Limonada de panela', cantidad: 4 });
+    igual(r.masVendidos[0], { nombre: 'Aguapanela con limón', cantidad: 4 });
     igual(r.cancelados, 1);
     igual(S.caja.resumenDia(S.datos.leer(), '2026-11-09').total, 0);
   });

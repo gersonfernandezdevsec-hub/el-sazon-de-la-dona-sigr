@@ -99,7 +99,7 @@
     try { await S.seguridad.crearPersonal({ nombre: 'Nuevo Mesero', usuario: 'nuevo.mesero', clave: 'Clave1234', rol: 'mesero' }); } catch (e) { bloqueado = true; }
     afirmar(bloqueado, 'un mesero no crea cuentas');
     S.seguridad.cerrarSesion();
-    await S.seguridad.iniciarSesion('admin', 'Totuma2026*');
+    await S.seguridad.iniciarSesion('admin', 'Sazon2026*');
     igual((await S.seguridad.crearPersonal({ nombre: 'Nuevo Mesero', usuario: 'nuevo.mesero', clave: 'Clave1234', rol: 'cliente' })).ok, false);
     const r = await S.seguridad.crearPersonal({ nombre: 'Nuevo Mesero', usuario: 'nuevo.mesero', clave: 'Clave1234', rol: 'mesero' });
     igual(r.ok, true);

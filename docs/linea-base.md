@@ -8,7 +8,7 @@ La línea base es la primera versión estable y aprobada del sistema. A partir d
 
 | Dato | Valor |
 |---|---|
-| Sistema | La Totuma: Sistema Integral de Gestión de Restaurante (SIGR) |
+| Sistema | El Sazón de la Doña: Sistema Integral de Gestión de Restaurante (SIGR) |
 | Versión | 1.0.0 |
 | Herramienta de control de versiones | Git, alojado en GitHub |
 | Rama estable | `main` |

@@ -1,6 +1,6 @@
-# La Totuma: Sistema Integral de Gestión de Restaurante (SIGR)
+# El Sazón de la Doña: Sistema Integral de Gestión de Restaurante (SIGR)
 
-Aplicación web para administrar un restaurante de cocina santandereana: carta, pedidos, reservas, caja y un programa de clientes frecuentes que regala un postre por consumo acumulado.
+Aplicación web para administrar un restaurante de comida típica antioqueña: carta, pedidos, reservas, caja y un programa de clientes frecuentes que regala un postre por consumo acumulado.
 
 Proyecto académico de la asignatura Gestión del Software (Ingeniería de Software, Tecnológica del Oriente). Se desarrolló por prototipos sucesivos, un commit por prototipo, hasta la **línea base 1.0.0**.
 
@@ -19,7 +19,7 @@ Los datos se guardan en el navegador (`localStorage`). La primera vez se cargan 
 
 | Rol | Usuario | Contraseña | Qué puede hacer |
 |---|---|---|---|
-| Administración | `admin` | `Totuma2026*` | Todo: carta, pedidos, reservas, caja y cierre, programa de clientes, cuentas y bitácora |
+| Administración | `admin` | `Sazon2026*` | Todo: carta, pedidos, reservas, caja y cierre, programa de clientes, cuentas y bitácora |
 | Mesero | `mesero` | `Mesero2026*` | Pedidos, reservas, cobros y canje de regalos |
 | Cliente | `cliente` | `Cliente2026*` | Ver la carta, reservar y consultar su tarjeta de sellos |
 

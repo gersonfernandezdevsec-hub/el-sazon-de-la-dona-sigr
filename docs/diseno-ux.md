@@ -19,7 +19,7 @@
 
 ## Identidad visual
 
-El restaurante es de cocina santandereana y la paleta sale de su cocina:
+El restaurante es de comida típica antioqueña y la paleta sale de su cocina:
 
 | Color | Valor | Uso |
 |---|---|---|
@@ -63,7 +63,7 @@ flowchart TD
 
 ```
 +--------------------------------------------------------------+
-| La Totuma | Inicio Carta Pedidos Reservas Caja ... | Usuario |
+| El Sazón de la Doña | Inicio Carta Pedidos Reservas Caja ... | Usuario |
 +--------------------------------------------------------------+
 | Título de la sección                        [Acción principal]|
 |                                                              |

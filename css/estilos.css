@@ -38,14 +38,14 @@ small { color: var(--tinta-suave); }
 .saltar:focus { left: .5rem; top: .5rem; }
 
 .barra {
-  display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
   padding: .6rem 1.25rem;
   background: var(--hoja); color: #fff;
 }
-.barra__marca { display: flex; align-items: center; gap: .5rem; color: #fff; text-decoration: none; font-weight: 600; font-size: 1.15rem; }
-.barra__nav { display: flex; gap: .25rem; flex: 1; overflow-x: auto; }
+.barra__marca { display: flex; align-items: center; gap: .5rem; color: #fff; text-decoration: none; font-weight: 600; font-size: 1.1rem; white-space: nowrap; }
+.barra__nav { display: flex; gap: .15rem; flex: 1; flex-wrap: wrap; }
 .barra__enlace {
-  color: #fff; text-decoration: none; padding: .45rem .8rem; border-radius: var(--radio); white-space: nowrap;
+  color: #fff; text-decoration: none; padding: .45rem .65rem; border-radius: var(--radio); white-space: nowrap;
 }
 .barra__enlace:hover { background: var(--hoja-oscura); }
 .barra__enlace[aria-current="page"] { background: var(--maiz); color: var(--tinta); font-weight: 600; }

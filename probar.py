@@ -46,7 +46,7 @@ class Canal:
 
 
 def main():
-    perfil = tempfile.mkdtemp(prefix="totuma-pruebas-")
+    perfil = tempfile.mkdtemp(prefix="sazon-pruebas-")
     pagina = "file://" + os.path.join(AQUI, "pruebas", "pruebas.html")
     chrome = subprocess.Popen([CHROME, "--headless=new", "--disable-gpu", f"--remote-debugging-port={PUERTO}",
                                "--remote-allow-origins=*", f"--user-data-dir={perfil}", pagina],

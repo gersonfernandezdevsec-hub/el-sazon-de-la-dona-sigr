@@ -7,13 +7,13 @@
     for (let i = 1; i <= S.fidelizacion.SELLOS; i++) {
       const ultimo = i === S.fidelizacion.SELLOS;
       casillas.push(h('li', { class: 'sello' + (i <= saldo.sellos ? ' sello--puesto' : '') + (ultimo ? ' sello--premio' : '') },
-        ultimo ? 'Postre' : i <= saldo.sellos ? h('img', { src: 'img/totuma.svg', alt: '', width: '30', height: '30' }) : String(i)));
+        ultimo ? 'Postre' : i <= saldo.sellos ? h('img', { src: 'img/logo.svg', alt: '', width: '30', height: '30' }) : String(i)));
     }
     return h('div', { class: 'tarjeta-sellos' },
       h('ol', { class: 'tarjeta-sellos__casillas', 'aria-label': saldo.sellos + ' de ' + S.fidelizacion.SELLOS + ' sellos' }, casillas),
       h('p', { class: 'tarjeta-sellos__texto' },
         'Llevas ', h('strong', null, S.dinero(saldo.avance)), ' de ', S.dinero(saldo.umbral), '. Te faltan ',
-        h('strong', null, S.dinero(saldo.falta)), ' para tu ', regalo ? regalo.nombre.toLowerCase() : 'postre', ' de regalo.'));
+        h('strong', null, S.dinero(saldo.falta)), ' para tu postre de regalo', regalo ? ': ' + regalo.nombre.toLowerCase() : '', '.'));
   }
 
   function vistaCliente(contenedor, usuario, estado) {
@@ -23,7 +23,7 @@
 
     contenedor.append(...[
       h('h1', null, 'Mi tarjeta'),
-      h('p', { class: 'entrada' }, 'Cada ' + S.dinero(saldo.umbral) + ' que consumes en La Totuma te ganas ' + (regalo ? 'una ' + regalo.nombre.toLowerCase() : 'un postre') + '. Cada sello vale ' + S.dinero(saldo.umbral / S.fidelizacion.SELLOS) + '.'),
+      h('p', { class: 'entrada' }, 'Cada ' + S.dinero(saldo.umbral) + ' que consumes en El Sazón de la Doña te ganas un postre de regalo' + (regalo ? ' (' + regalo.nombre.toLowerCase() + ')' : '') + '. Cada sello vale ' + S.dinero(saldo.umbral / S.fidelizacion.SELLOS) + '.'),
       estado.config.fidelizacion.activa ? null : h('p', { class: 'errores' }, 'El programa está en pausa. Tus consumos y regalos se conservan.'),
       saldo.disponibles ? h('p', { class: 'premio-listo' },
         h('strong', null, saldo.disponibles === 1 ? 'Tienes 1 postre de regalo.' : 'Tienes ' + saldo.disponibles + ' postres de regalo.'),
@@ -110,7 +110,7 @@
           S.avisar(r.ok ? 'Postre de regalo agregado' : r.errores[0], r.ok ? 'ok' : 'error');
           repintar();
         }
-      }, 'Agregar ' + (regalo ? regalo.nombre.toLowerCase() : 'postre') + ' de regalo') : 'Se agrega antes de enviar el pedido a cocina.');
+      }, 'Agregar postre de regalo' + (regalo ? ': ' + regalo.nombre.toLowerCase() : '')) : 'Se agrega antes de enviar el pedido a cocina.');
   });
 
   S.registrarVista({

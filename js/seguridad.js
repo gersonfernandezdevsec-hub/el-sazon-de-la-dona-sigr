@@ -5,7 +5,7 @@ window.SIGR = window.SIGR || {};
   const MAX_INTENTOS = 5;
   const BLOQUEO_MS = 5 * 60 * 1000;
   const INACTIVIDAD_MS = 15 * 60 * 1000;
-  const CLAVE_SESION = 'sigr.totuma.sesion';
+  const CLAVE_SESION = 'sigr.sazon.sesion';
 
   const PERMISOS = {
     admin: ['carta.ver', 'carta.editar', 'pedidos.gestionar', 'reservas.gestionar', 'caja.cobrar', 'caja.cerrar',

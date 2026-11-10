@@ -1,7 +1,7 @@
 'use strict';
 window.SIGR = window.SIGR || {};
 (function (S) {
-  const CLAVE = 'sigr.totuma.v1';
+  const CLAVE = 'sigr.sazon.v1';
 
   S.ahora = () => Date.now();
 
@@ -51,7 +51,7 @@ window.SIGR = window.SIGR || {};
   };
 
   const CUENTAS_DEMO = [
-    { nombre: 'Marta Rueda', usuario: 'admin', clave: 'Totuma2026*', rol: 'admin' },
+    { nombre: 'Marta Rueda', usuario: 'admin', clave: 'Sazon2026*', rol: 'admin' },
     { nombre: 'Julián Pabón', usuario: 'mesero', clave: 'Mesero2026*', rol: 'mesero' },
     { nombre: 'Laura Ardila', usuario: 'cliente', clave: 'Cliente2026*', rol: 'cliente', telefono: '3005550101' }
   ];
@@ -69,25 +69,25 @@ window.SIGR = window.SIGR || {};
 
   const CARTA_DEMO = [
     { categoria: 'Entradas', platos: [
-      ['Arepa santandereana', 'De maíz pelado con chicharrón molido, asada en tiesto.', 6000],
-      ['Hormigas culonas', 'Tostadas con sal. Porción para compartir.', 18000],
-      ['Yuca frita con ají', 'Con ají de la casa.', 9000]
+      ['Arepa con hogao', 'Arepa de maíz asada con hogao de tomate y cebolla.', 6000],
+      ['Chicharrón con arepa', 'Chicharrón carnudo de varias patas. Porción para compartir.', 18000],
+      ['Empanadas antioqueñas', 'Tres empanadas de papa y carne con ají.', 9000]
     ] },
     { categoria: 'Platos fuertes', platos: [
-      ['Cabro con pepitoria', 'Cabro al horno con pepitoria, yuca y arepa.', 46000],
-      ['Carne oreada', 'Res secada al sol y asada, con yuca y ají.', 38000],
-      ['Mute santandereano', 'Sopa de maíz, callo, costilla y verduras.', 29000],
-      ['Tamal santandereano', 'De maíz pelado con tres carnes y garbanzo.', 17000]
+      ['Bandeja paisa', 'Frijoles, arroz, carne molida, chicharrón, chorizo, huevo, tajada, aguacate y arepa.', 46000],
+      ['Sancocho trifásico', 'De res, cerdo y gallina, con yuca, papa, plátano y mazorca.', 38000],
+      ['Mondongo antioqueño', 'Con arroz, aguacate, banano y arepa.', 29000],
+      ['Calentao paisa', 'Frijoles y arroz del día anterior con huevo, carne y arepa.', 17000]
     ] },
     { categoria: 'Bebidas', platos: [
-      ['Limonada de panela', 'Con limón mandarino.', 7000],
-      ['Jugo de mora en agua', 'Fruta natural.', 8000],
+      ['Aguapanela con limón', 'Fría, con hielo.', 7000],
+      ['Jugo de lulo en agua', 'Fruta natural.', 8000],
       ['Refajo', 'Jarra pequeña.', 12000]
     ] },
     { categoria: 'Postres', platos: [
-      ['Oblea con arequipe', 'Dos obleas con arequipe y queso rallado.', 9000],
-      ['Bocadillo veleño con queso', 'Bocadillo de guayaba y queso fresco.', 8000],
-      ['Dulce de apio y cidra', 'Receta de Floridablanca.', 8500]
+      ['Brevas con arequipe', 'Brevas caladas con arequipe y queso fresco.', 9000],
+      ['Postre de natas', 'Receta de la casa.', 8000],
+      ['Mazamorra con bocadillo', 'Maíz peto con leche fría y bocadillo.', 8500]
     ] }
   ];
 

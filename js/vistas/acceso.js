@@ -9,9 +9,9 @@
       raiz.replaceChildren(
         h('main', { class: 'acceso' },
           h('div', { class: 'acceso__marca' },
-            h('img', { src: 'img/totuma.svg', alt: '', width: '72', height: '72' }),
-            h('h1', null, 'La Totuma'),
-            h('p', null, 'Cocina santandereana. Sistema de gestión del restaurante.')),
+            h('img', { src: 'img/logo.svg', alt: '', width: '72', height: '72' }),
+            h('h1', null, 'El Sazón de la Doña'),
+            h('p', null, 'Comida típica antioqueña. Sistema de gestión del restaurante.')),
           h('div', { class: 'acceso__panel' },
             h('div', { class: 'pestanas', role: 'tablist' },
               pestana('entrar', 'Iniciar sesión'),

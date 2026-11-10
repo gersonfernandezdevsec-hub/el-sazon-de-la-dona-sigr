@@ -28,7 +28,7 @@
       h('div', { class: 'marco' },
         h('header', { class: 'barra' },
           h('a', { class: 'barra__marca', href: '#/inicio' },
-            h('img', { src: 'img/totuma.svg', alt: '', width: '32', height: '32' }), 'La Totuma'),
+            h('img', { src: 'img/logo.svg', alt: '', width: '32', height: '32' }), 'El Sazón de la Doña'),
           h('nav', { class: 'barra__nav', 'aria-label': 'Secciones' },
             permitidas.map((v) => h('a', {
               href: '#/' + v.ruta, class: 'barra__enlace', 'aria-current': vista === v ? 'page' : null
@@ -47,7 +47,7 @@
         h('a', { class: 'boton', href: '#/inicio' }, 'Ir al inicio')));
       return;
     }
-    document.title = vista.titulo + ' | La Totuma';
+    document.title = vista.titulo + ' | El Sazón de la Doña';
     vista.render(contenido, usuario);
   }
 
