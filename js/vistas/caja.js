@@ -24,8 +24,12 @@
         class: 'formulario', novalidate: true,
         onsubmit: (ev) => {
           ev.preventDefault();
+          const antes = pedido.clienteId ? S.fidelizacion.estadoCliente(S.datos.leer(), pedido.clienteId).ganadas : 0;
           const r = S.caja.cobrar(pedido.id, metodo.value, Number(recibido.value));
           if (!r.ok) return zonaErrores.replaceChildren(S.errores(r.errores));
+          if (pedido.clienteId && S.fidelizacion.estadoCliente(S.datos.leer(), pedido.clienteId).ganadas > antes) {
+            S.avisar('Con este consumo el cliente ganó un postre de regalo para su próxima visita.');
+          }
           cerrar();
           S.avisar('Pedido ' + pedido.numero + ' cobrado' + (r.cambio ? '. Cambio: ' + S.dinero(r.cambio) : ''));
           S.refrescar();

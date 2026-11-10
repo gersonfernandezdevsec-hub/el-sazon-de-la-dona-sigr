@@ -210,3 +210,21 @@ input[type="checkbox"] { width: auto; }
 .barras__barra { display: block; height: 100%; background: var(--hoja); border-radius: 3px; min-width: 2px; }
 .barras__valor { text-align: right; font-variant-numeric: tabular-nums; }
 [hidden] { display: none !important; }
+
+.tarjeta-sellos {
+  max-width: 34rem; padding: 1.25rem; border-radius: 12px;
+  background: var(--maiz-suave); border: 2px dashed #c9992a;
+}
+.tarjeta-sellos__casillas { list-style: none; margin: 0 0 1rem; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: .6rem; }
+.sello {
+  aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center;
+  border: 2px solid #c9992a; background: var(--papel); color: #8a6a14; font-weight: 600; font-variant-numeric: tabular-nums;
+}
+.sello--puesto { background: var(--hoja); border-color: var(--hoja); transform: rotate(-8deg); }
+.sello--puesto:nth-child(even) { transform: rotate(6deg); }
+.sello--premio { border-style: dashed; font-size: .85rem; color: var(--hoja-oscura); border-color: var(--hoja); }
+.tarjeta-sellos__texto { margin: 0; }
+.premio-listo { background: var(--hoja); color: #fff; padding: .8rem 1rem; border-radius: var(--radio); max-width: 34rem; }
+.tabla--angosta { max-width: 34rem; }
+.pedido-fidelizacion { margin-top: .6rem !important; padding: .6rem .75rem; background: var(--maiz-suave); border-radius: var(--radio); }
+.tabla .barras__pista { min-width: 7rem; height: .6rem; margin-bottom: .2rem; }
