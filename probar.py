@@ -54,7 +54,7 @@ def main():
                               stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     try:
         url = None
-        for _ in range(50):
+        for _ in range(150):
             time.sleep(0.2)
             try:
                 paginas = json.load(urllib.request.urlopen(f"http://127.0.0.1:{PUERTO}/json"))
