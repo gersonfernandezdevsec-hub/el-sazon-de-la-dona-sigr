@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 import base64, json, os, socket, struct, subprocess, sys, tempfile, time, urllib.request
 
-CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+CHROME = os.environ.get("CHROME_BIN", "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
+BANDERAS_CI = ["--no-sandbox"] if os.environ.get("CI") else []
 AQUI = os.path.dirname(os.path.abspath(__file__))
 PUERTO = 9333
 
@@ -48,7 +49,7 @@ class Canal:
 def main():
     perfil = tempfile.mkdtemp(prefix="sazon-pruebas-")
     pagina = "file://" + os.path.join(AQUI, "pruebas", "pruebas.html")
-    chrome = subprocess.Popen([CHROME, "--headless=new", "--disable-gpu", f"--remote-debugging-port={PUERTO}",
+    chrome = subprocess.Popen([CHROME, "--headless=new", "--disable-gpu", *BANDERAS_CI, f"--remote-debugging-port={PUERTO}",
                                "--remote-allow-origins=*", f"--user-data-dir={perfil}", pagina],
                               stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     try:
